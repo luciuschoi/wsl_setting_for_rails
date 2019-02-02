@@ -1,4 +1,4 @@
-#윈도우 10에서 레일스 프로젝트 개발환경 설정하기 (2019년)
+# 윈도우 10에서 레일스 프로젝트 개발환경 설정하기 (2019년)
 
 우분투(WSL)를 설치한 후, 
 
@@ -90,16 +90,16 @@
 8. Bundler 젬 설치하기
   `~/.gemrc` 파일을 생성하고 아래의 내용을 복사해서 붙여넣기 한다.  
 
-  ```
-  gem: --no-document
-  ```
+   ```
+   gem: --no-document
+   ```
 
-  이것은 향후 젬을 설치할 때 문서 파일을 제외하기 위한 조치이다.
+   이것은 향후 젬을 설치할 때 문서 파일을 제외하기 위한 조치이다.
 
-  ```sh
-  $ gem install bundler
-  $ rbenv rehash
-  ```
+   ```sh
+   $ gem install bundler
+   $ rbenv rehash
+   ```
 
 9. Git 환경설정하기 
 
@@ -110,19 +110,19 @@
    $ ssh-keygen -t rsa -b 4096 -C "YOUR@EMAIL.com"
    ```
 
-10. Github 에 ssh 공개키 등록하기
-  생성된  ssh  공개키를 복사한다. 
+10. Github 에 ssh 공개키 등록하기   
+    생성된  ssh  공개키를 복사한다. 
 
-  ```sh
-  $ cat ~/.ssh/id_rsa.pub
-  ```
+    ```sh
+    $ cat ~/.ssh/id_rsa.pub
+    ```
 
-  자신의  github 계정으로 로그인 한 후 설정으로 이동하여 ssh 키를 등록한다. 
-  이제 제대로 설정이 되었는지 확인하기 위해 아래와 같이 쉘명령을 실행한다.
+    자신의  github 계정으로 로그인 한 후 설정으로 이동하여 ssh 키를 등록한다. 
+    이제 제대로 설정이 되었는지 확인하기 위해 아래와 같이 쉘명령을 실행한다.
 
-  ```sh
-  $ ssh -T git@github.com
-  ```
+    ```sh
+    $ ssh -T git@github.com
+    ```
 
 11. Nodejs 설치하기
 
