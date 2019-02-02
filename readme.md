@@ -91,12 +91,12 @@
 
 8. Git 환경설정하기 
 
-  ```sh
-  $ git config --global color.ui true
-  $ git config --global user.name "YOUR NAME"
-  $ git config --global user.email "YOUR@EMAIL.com"
-  $ ssh-keygen -t rsa -b 4096 -C "YOUR@EMAIL.com"
-  ```
+   ```sh
+   $ git config --global color.ui true
+   $ git config --global user.name "YOUR NAME"
+   $ git config --global user.email "YOUR@EMAIL.com"
+   $ ssh-keygen -t rsa -b 4096 -C "YOUR@EMAIL.com"
+   ```
 
 9. Github 에 ssh 공개키 등록하기   
    생성된  ssh  공개키를 복사한다. 
@@ -114,10 +114,10 @@
 
 10. Nodejs 설치하기
 
-  ```sh
-  $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-  $ sudo apt-get install -y nodejs
-  ```
+    ```sh
+    $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    $ sudo apt-get install -y nodejs
+    ```
 
 11. Yarn(자바스크립트 패키지 매니저) 설치하기
 
@@ -158,16 +158,16 @@
 
     *  시스템 유저를 MySQL 유저로 추가할 경우
 
-      ```sh
-      $ sudo mysql -u root -p
-      mysql> use mysql;
-      mysql> create user 'system-username'@'localhost' identified by '';
-      mysql> grant all privileges on * . * to 'system-username'@'localhost';
-      mysql> update user set plugin='auth_socket' where user='system-username';
-      mysql> flush privileges;
-      mysql> exit;
-      $ sudo service mysql restart
-      ```
+       ```sh
+       $ sudo mysql -u root -p
+       mysql> use mysql;
+       mysql> create user 'system-username'@'localhost' identified by '';
+       mysql> grant all privileges on * . * to 'system-username'@'localhost';
+       mysql> update user set plugin='auth_socket' where user='system-username';
+       mysql> flush privileges;
+       mysql> exit;
+       $ sudo service mysql restart
+       ```
 
     * 배포용 계정(`deployer`)을 생성한다.
 
