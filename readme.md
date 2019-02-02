@@ -4,14 +4,14 @@
 
 1. 시스템 업데이트 설치하기
 
-  ```sh
-  $ sudo apt update
-  $ sudo apt list --upgradable
-  $ sudo apt upgrade
-  $ sudo apt autoremove
-  ```
+   ```sh
+   $ sudo apt update
+   $ sudo apt list --upgradable
+   $ sudo apt upgrade
+   $ sudo apt autoremove
+   ```
 
-  https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-18-04
+   https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-18-04
 
 2. 운영체제 버전 알아내기
 
