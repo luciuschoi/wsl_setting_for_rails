@@ -169,12 +169,12 @@
     ```sh
     $ sudo apt-get install -y mysql-server mysql-client libmysqlclient-dev
     $ sudo service mysql start
-    $ sudo mysql_secure_installation
+    $ sudo mysql_secure_installation  # root 계정에 암호를 설정할 때
     $ sudo mysql
     ```
 
     * `root@localhost` 계정 접속이 안될 때
-      -> https://stackoverflow.com/a/41793945
+      -> https://youtu.be/SJm91cvE_ks
 
     * 한글깨짐현상 방지하기
       (https://nesoy.github.io/articles/2017-05/mysql-UTF8)
@@ -203,10 +203,10 @@
 
     * 윈도우용 MySQL Workbench 설치하기
       (https://stackoverflow.com/a/54192456) 
-      주의사항 : 서버의 시동은  WSL 에서 해야 한다.
+      주의사항 : 서버의 시작과 종료는  WSL 에서 해야 한다.
 
       ```sh
-      $ sudo service mysql start
+      $ sudo service mysql start|stop|restart|status
       ```
 
 16. PostgreSQL  설치하기(선택사항)
