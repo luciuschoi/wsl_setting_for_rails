@@ -101,6 +101,17 @@
    $ ssh-keygen -t rsa -b 4096 -C "YOUR@EMAIL.com"
    ```
 
+   단축키 설정하기
+
+   ```sh
+   $ git config --global alias.co checkout
+   $ git config --global alias.br branch
+   $ git config --global alias.ci commit
+   $ git config --global alias.st status
+   $ git config --global alias.unstage 'reset HEAD --'
+   $ git config --global alias.last 'log -1 HEAD'
+   ```
+
 9. Github 에 ssh 공개키 등록하기   
    생성된  ssh  공개키를 복사한다. 
 
@@ -117,10 +128,10 @@
 
 10. Nodejs 설치하기
 
-   ```sh
-   $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-   $ sudo apt install -y nodejs
-   ```
+  ```sh
+  $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  $ sudo apt install -y nodejs
+  ```
 
 11. Yarn(자바스크립트 패키지 매니저) 설치하기
 
