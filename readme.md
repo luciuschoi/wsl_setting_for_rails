@@ -42,7 +42,7 @@
    https://medium.com/@vinhp/use-zsh-in-wsl-on-windows-10-5d439a749c4c
 
    ```sh
-   $ sudo apt-get install -y zsh
+   $ sudo apt install -y zsh
    $ zsh # 설치 옵션 0 을 선택한다.
    ```
 
@@ -58,7 +58,7 @@
 
    ```sh
    if test -t 1; then
-   exec zsh
+     exec zsh
    fi
    ```
 
@@ -82,11 +82,12 @@
    $ ruby -v
    ```
 
-7. Bundler 젬 설치하기
-  `~/.gemrc` 파일을 생성하고 아래의 내용을 복사해서 붙여넣기 한다.  
+7. 젬 설치시 옵션추가
+  `~/.gemrc` 파일을 생성하고 아래와 같은 옵션을 추가한다. 
 
-   ```
-   gem: --no-document
+   ```sh
+  $ echo "gem: --no-document" >> ~/.gemrc
+  $ gem install bundler
    ```
 
    이것은 향후 젬을 설치할 때 문서 파일을 제외하기 위한 조치이다.
@@ -116,23 +117,23 @@
 
 10. Nodejs 설치하기
 
-    ```sh
-    $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-    $ sudo apt-get install -y nodejs
-    ```
+   ```sh
+   $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+   $ sudo apt install -y nodejs
+   ```
 
 11. Yarn(자바스크립트 패키지 매니저) 설치하기
 
     ```sh
     $ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     $ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    $ sudo apt-get update && sudo apt-get install yarn
+    $ sudo apt update && sudo apt install yarn
     ```
 
 12. ImageMagick 설치하기
 
     ```sh
-    $ sudo apt-get install -y libmagickwand-dev imagemagick
+    $ sudo apt install -y libmagickwand-dev imagemagick
     ```
 
 13. MySQL  설치하기
@@ -140,7 +141,7 @@
     https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
 
     ```sh
-    $ sudo apt-get install -y mysql-server mysql-client libmysqlclient-dev
+    $ sudo apt install -y mysql-server mysql-client libmysqlclient-dev
     $ sudo service mysql start
     $ sudo mysql_secure_installation  # root 계정에 암호를 설정할 때
     $ sudo mysql
@@ -157,9 +158,10 @@
       mysql> flush privileges;
       mysql> exit;
       $ sudo service mysql restart
+      $ mysql -uroot
       ```
 
-    *  시스템 유저를 MySQL 유저로 추가할 경우
+    * 시스템 유저를 MySQL 유저로 추가할 경우
 
        ```sh
        $ sudo mysql -u root -p
@@ -170,14 +172,19 @@
        mysql> flush privileges;
        mysql> exit;
        $ sudo service mysql restart
+       $ mysql
        ```
 
     * 배포용 계정(`deployer`)을 생성한다.
 
       ```mysql
+      $ sudo mysql -u root -p
+      mysql> use mysql;
       mysql> CREATE USER 'deployer'@'localhost' IDENTIFIED BY 'password';
       mysql> GRANT ALL PRIVILEGES ON *.* TO 'deployer'@'localhost' WITH GRANT OPTION;
       mysql> FLUSH PRIVILEGES;
+      mysql> exit;
+      $ mysql -u deployer -p
       ```
 
     * 한글깨짐현상 방지하기
@@ -197,8 +204,15 @@
       character-set-server = utf8
       ```
 
+      추가한 내용을 저장한 후 MySQL 서버를 재시작한다.
+
+      ```sh
+      $ sudo service mysql restart
+      ```
+
     * 윈도우용 MySQL Workbench 설치하기
-      (https://stackoverflow.com/a/54192456) 
+
+      (https://downloads.mysql.com/archives/workbench/)
       주의사항 : 서버의 시작과 종료는  WSL 에서 해야 한다.
 
       ```sh
@@ -226,31 +240,47 @@
 
          ```sh
          $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-         $ sudo apt-get update
+         $ sudo apt update
          ```
 
       3. 배포판 설치하기 (2019년 2월 현재 최신 버전 11)
 
          ```sh
-         $ sudo apt-get install postgresql-11
+         $ sudo apt install -y postgresql-11
+         ```
+
+      4. 의존성 라이브러리 설치하기(`pg` 젬 설치시에 필요함)
+
+         ```sh
+         $ sudo apt install -y libpq-dev
          ```
 
     * 데이터베이스 생성하고 사용자 추가하기
       (https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
 
       ```sh
+      $ sudo service postgresql start
       $ sudo -u postgres psql
       psql=# CREATE DATABASE yourdbname;
       psql=# CREATE USER youruser WITH ENCRYPTED PASSWORD 'yourpass';
       psql=# GRANT ALL PRIVILEGES ON DATABASE yourdbname TO youruser;
       ```
 
-    * PgAdmin 4 설치하기
-      (https://stackoverflow.com/a/54192456)
-      주의사항 : 서버의 기동은 WSL 에서 해야 한다. 
+    * pgAdmin 4 (Windows) 설치하기
+
+      * 다운로드
+        : https://www.pgadmin.org/download/pgadmin-4-windows/
+      * 설치후 서버 추가하기 
+        : https://stackoverflow.com/a/54192456
+      * `postgres` 계정의 비밀번호 인증오류시 
+        : https://stackoverflow.com/a/7696398
+      * 주의사항 : 서버의 기동은 WSL 에서 해야 한다. 
 
       ```sh
       $ sudo service postgresql start
+      $ sudo -u postgres psql
+      postgres=# alter user postgres password 'password';
+      postgres=# \q
       ```
 
 
@@ -290,5 +320,11 @@
     'config.i18n.fallbacks = [I18n.default_locale]'.
     If not, fallbacks will be broken in your app by I18n 1.1.x.
     ```
-    ​    
+    레일스 서버 실행시에는 가급적 `bin` 디렉토리에 있는 실행파일을 사용할 것을 권한다. 
 
+    ```sh
+    $ bin/rails s
+    $ bin/rails db:create
+    $ bin/rails db:migrate
+    $ bin/rails g scaffold ....
+    ```
