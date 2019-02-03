@@ -218,9 +218,9 @@
 
       1. `/etc/apt/sources.list.d/pgdg.list` 파일을 생성하고 아래의 내용을 붙여 넣기 한다. (우분투 18.04 기준)
 
-        ```sh
-        deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
-        ```
+         ```sh
+         deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+         ```
 
       2. 저장소 키를 불러와 패키지 목록을 업데이트 한다.
 
