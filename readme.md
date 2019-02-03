@@ -268,15 +268,14 @@
          $ sudo apt install -y libpq-dev
          ```
 
-    * 데이터베이스 생성하고 사용자 추가하기
+    * 배포용 사용자 추가하기
       (https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
 
       ```sh
       $ sudo service postgresql start
       $ sudo -u postgres psql
-      psql=# CREATE DATABASE yourdbname;
-      psql=# CREATE USER youruser WITH ENCRYPTED PASSWORD 'yourpass';
-      psql=# GRANT ALL PRIVILEGES ON DATABASE yourdbname TO youruser;
+      psql=# CREATE USER deployer WITH PASSWORD 'yourpass';
+      psql=# ALTER ROLE deployer superuser createrole createdb replication; 
       ```
 
     * pgAdmin 4 (Windows) 설치하기
