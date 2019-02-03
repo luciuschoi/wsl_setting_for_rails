@@ -116,10 +116,10 @@
 
 10. Nodejs 설치하기
 
-  ```sh
-  $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-  $ sudo apt-get install -y nodejs
-  ```
+    ```sh
+    $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    $ sudo apt-get install -y nodejs
+    ```
 
 11. Yarn(자바스크립트 패키지 매니저) 설치하기
 
