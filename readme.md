@@ -1,3 +1,5 @@
+wsl_setting_for_rails v1.0
+
 # 윈도우 10에서 레일스 프로젝트 개발환경 설정하기 (2019년)
 
 윈도우 10에서는 리눅스 배포판을 윈도우 하위시스템(Windows Subsystem for Linux, WSL)으로 설치하여 리눅스 운영체제를 사용할 수 있다. 이제 윈도우 10 에서도  레일스 프로젝트 개발환경을 손쉽게 구축할 수 있게 되었다.  
@@ -226,6 +228,7 @@
     * 윈도우용 MySQL Workbench 설치하기
 
       (https://downloads.mysql.com/archives/workbench/)
+
       주의사항 : 서버의 시작과 종료는  WSL 에서 해야 한다.
 
       ```sh
