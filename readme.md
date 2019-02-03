@@ -83,11 +83,12 @@
    ```
 
 7. 젬 설치시 옵션추가
-  `~/.gemrc` 파일을 생성하고 아래와 같은 옵션을 추가한다. 
+
+   `~/.gemrc` 파일을 생성하고 아래와 같은 옵션을 추가한다. 
 
    ```sh
-  $ echo "gem: --no-document" >> ~/.gemrc
-  $ gem install bundler
+   $ echo "gem: --no-document" >> ~/.gemrc
+   $ gem install bundler
    ```
 
    이것은 향후 젬을 설치할 때 문서 파일을 제외하기 위한 조치이다.
@@ -113,6 +114,7 @@
    ```
 
 9. Github 에 ssh 공개키 등록하기   
+
    생성된  ssh  공개키를 복사한다. 
 
    ```sh
@@ -128,10 +130,10 @@
 
 10. Nodejs 설치하기
 
-  ```sh
-  $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-  $ sudo apt install -y nodejs
-  ```
+    ```sh
+    $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    $ sudo apt install -y nodejs
+    ```
 
 11. Yarn(자바스크립트 패키지 매니저) 설치하기
 
