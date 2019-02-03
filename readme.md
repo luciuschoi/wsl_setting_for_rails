@@ -37,7 +37,8 @@
    $ sudo apt install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev
    ```
 
-4. Zsh  설치하기
+4. Zsh 설치하기
+
    https://medium.com/@vinhp/use-zsh-in-wsl-on-windows-10-5d439a749c4c
 
    ```sh
@@ -46,6 +47,7 @@
    ```
 
 5. oh-my-zsh  설치하기
+
    https://blog.joaograssi.com/windows-subsystem-for-linux-with-oh-my-zsh-conemu/
 
    ```sh
@@ -114,10 +116,10 @@
 
 10. Nodejs 설치하기
 
-    ```sh
-    $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-    $ sudo apt-get install -y nodejs
-    ```
+  ```sh
+  $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  $ sudo apt-get install -y nodejs
+  ```
 
 11. Yarn(자바스크립트 패키지 매니저) 설치하기
 
@@ -134,6 +136,7 @@
     ```
 
 13. MySQL  설치하기
+
     https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
 
     ```sh
@@ -211,6 +214,37 @@
       2. https://medium.com/@stephanedmonson/solution-for-connecting-postgresql-via-wsl-windows-subsystem-for-linux-ubuntu18-c79940fa5742
       3. https://github.com/michaeltreat/Windows-Subsystem-For-Linux-Setup-Guide/blob/master/readmes/installs/PostgreSQL.md
 
+    * WSL로 접속한 후 
+
+      1. `/etc/apt/sources.list.d/pgdg.list` 파일을 생성하고 아래의 내용을 붙여 넣기 한다. (우분투 18.04 기준)
+
+        ```sh
+        deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+        ```
+
+      2. 저장소 키를 불러와 패키지 목록을 업데이트 한다.
+
+         ```sh
+         $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+         $ sudo apt-get update
+         ```
+
+      3. 배포판 설치하기 (2019년 2월 현재 최신 버전 11)
+
+         ```sh
+         $ sudo apt-get install postgresql-11
+         ```
+
+    * 데이터베이스 생성하고 사용자 추가하기
+      (https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
+
+      ```sh
+      $ sudo -u postgres psql
+      psql=# CREATE DATABASE yourdbname;
+      psql=# CREATE USER youruser WITH ENCRYPTED PASSWORD 'yourpass';
+      psql=# GRANT ALL PRIVILEGES ON DATABASE yourdbname TO youruser;
+      ```
+
     * PgAdmin 4 설치하기
       (https://stackoverflow.com/a/54192456)
       주의사항 : 서버의 기동은 WSL 에서 해야 한다. 
@@ -219,14 +253,6 @@
       $ sudo service postgresql start
       ```
 
-    * PostgreSQL  사용자 추가
-      (https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
-
-    * ###### `pg` 젬을 설치하기 위해서 아래의 의존성을 설치하기
-
-      ```sh
-      $ sudo apt install -y postgresql-client-common postgresql-client libpq-dev
-      ```
 
 15. 윈도우 파일 시스템에 접근하기
     (https://code.apptilus.com/posts/tools/windows-subsystem-linux)
