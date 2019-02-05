@@ -1,4 +1,4 @@
-wsl_setting_for_rails v1.0
+wsl_setting_for_rails, v1.0.1
 
 # 윈도우 10에서 레일스 프로젝트 개발환경 설정하기 (2019년)
 
@@ -132,10 +132,10 @@ wsl_setting_for_rails v1.0
 
 10. Nodejs 설치하기
 
-    ```sh
-    $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-    $ sudo apt install -y nodejs
-    ```
+  ```sh
+  $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  $ sudo apt install -y nodejs
+  ```
 
 11. Yarn(자바스크립트 패키지 매니저) 설치하기
 
@@ -172,7 +172,6 @@ wsl_setting_for_rails v1.0
       mysql> update user set plugin='mysql_native_password' where user='root';
       mysql> flush privileges;
       mysql> exit;
-      $ sudo service mysql restart
       $ mysql -uroot
       ```
 
@@ -278,8 +277,42 @@ wsl_setting_for_rails v1.0
       ```sh
       $ sudo service postgresql start
       $ sudo -u postgres psql
-      psql=# CREATE USER deployer WITH PASSWORD 'yourpass';
-      psql=# ALTER ROLE deployer superuser createrole createdb replication; 
+      postgres=# CREATE USER deployer WITH PASSWORD 'yourpass';
+      postgres=# ALTER ROLE deployer superuser createrole createdb replication; 
+      ```
+
+      * 아래와 같은 인증오류가 발생할 때
+
+        ```
+        FATAL:  Peer authentication failed for user "deployer"
+        ```
+
+        ***해결방법*** 
+        : https://gist.github.com/AtulKsol/4470d377b448e56468baef85af7fd614
+
+      * **pg_hba.conf** 파일의 위치 확인하기(hba: host-based authentication)
+
+        : db 에 접속해서 아래명령어를 입력해서 확인할 수 있다.
+
+        ```sh
+        $ psql -h localhost -U postgres
+        postgres=# SHOW hba_file;
+        ```
+
+    * postgres 계정 암호를 지정한다.
+
+      ```sh
+      $ sudo -u postgres psql
+      postgres=# alter user postgres password 'password';
+      postgres=# \q
+      ```
+
+    * SQL 쉘 접속하기
+
+      http://postgresguide.com/utilities/psql.html
+
+      ```sh
+      $ psql -h localhost -U postgres [postgres] [-p 5432]
       ```
 
     * pgAdmin 4 (Windows) 설치하기
@@ -292,11 +325,16 @@ wsl_setting_for_rails v1.0
         : https://stackoverflow.com/a/7696398
       * 주의사항 : 서버의 기동은 WSL 에서 해야 한다. 
 
+        ```sh
+        $ sudo service postgresql [start|stop|restart|reload|force-reload|status]
+        ```
+
+    * PostgreSQL 완전히 제거하기
+
+      PostgreSQL을 깨끗하게 재설치할 때는 아래와 같이 실행한다.
+
       ```sh
-      $ sudo service postgresql start
-      $ sudo -u postgres psql
-      postgres=# alter user postgres password 'password';
-      postgres=# \q
+      $ sudo apt --purge remove postgresql/*
       ```
 
 
