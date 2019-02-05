@@ -1,4 +1,4 @@
-wsl_setting_for_rails, v1.0.1
+wsl_setting_for_rails, v1.1.0
 
 # 윈도우 10에서 레일스 프로젝트 개발환경 설정하기 (2019년)
 
