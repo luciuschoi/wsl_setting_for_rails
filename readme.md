@@ -1,4 +1,4 @@
-wsl_setting_for_rails, v1.1.0
+wsl_setting_for_rails, v1.2.0
 
 # 윈도우 10에서 레일스 프로젝트 개발환경 설정하기 (2019년)
 
@@ -6,11 +6,43 @@ wsl_setting_for_rails, v1.1.0
 
 윈도우 10에서는 리눅스 배포판을 윈도우 하위시스템(Windows Subsystem for Linux, WSL)으로 설치하여 리눅스 운영체제를 사용할 수 있다. 이제 윈도우 10 에서도  레일스 프로젝트 개발환경을 손쉽게 구축할 수 있게 되었다.  
 
-현재 등록 가능한 리눅스 배포판은 https://aka.ms/wslstore 에서 알 수 있다. 
 
-이 중에서 우분투 18.04 버전을 설치한 이후부터 설명한다. 
 
-1. 시스템 업데이트 설치하기
+1.  윈도우 10 에 우분투를 설치하자
+
+   윈도우 검색창에서 `제어판` 이라고 입력한 후 
+
+   ![](C:\Users\lucius\Documents\윈도우10에우분투를설치하자\assets\program_and_feature.png)
+
+   우측 컬럼에 있는 프로그램 및 기능 항목을 선택한다.
+
+   좌측 컬럼에 있는 Windows 기능 켜기/끄기 메뉴를 클릭하며 팝업창이 나타나며 이 때 `Linux용 Windows 하위시스템` 을 체크한 후 확인버튼을 클릭한다. 
+
+   ![](C:\Users\lucius\Documents\윈도우10에우분투를설치하자\assets\wsl.png)
+
+   윈도우가 재부팅된 후,
+
+   우선 좌측 하단에 있는 윈도우 아이콘을 클릭하거나 키보드에서 좌측 하단에 위치한 윈도우 키를 누르고 `store` 라고 입력하면, 
+
+   ![](C:\Users\lucius\Documents\윈도우10에우분투를설치하자\assets\ms_store.png)
+
+   검색 메뉴에 Microsoft Sotre 앱 항목이 보이게 되는데, 이것을 클릭하여 실행한다.
+
+    스토어 창의 우측 상단에 있는 검색란에서 `ubuntu` 라고 입력하면 아래와 같이 관련 앱 목록이 보이는데 이 때 18.04 LTS 버전을 선택한다. 
+
+   ![](C:\Users\lucius\Documents\윈도우10에우분투를설치하자\assets\ubuntu.png)
+
+   다운로드 창의 우측에 있는 설치 버튼을 클릭한다. 
+
+   ![](C:\Users\lucius\Documents\윈도우10에우분투를설치하자\assets\installation.png)
+
+   다운로드가 완료되면 설치 버튼이 보이게 된다. 이 버튼을 클릭하면 비로서 터미날 창이 보이고 우분투 앱이 설치된다. 이어지는 안내에 따라 진행한다.
+
+   ![](C:\Users\lucius\Documents\윈도우10에우분투를설치하자\assets\terminal.png)
+
+    슈퍼유저 권한을 가지는 사용자 등록이 완료되면 아래의 내용을 참조하여 레일스 개발환경을 설정한다. 
+
+2. 시스템 업데이트 설치하기
 
    ```sh
    $ sudo apt update
@@ -21,7 +53,7 @@ wsl_setting_for_rails, v1.1.0
 
    https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-18-04
 
-2. 운영체제 버전 알아내기
+3. 운영체제 버전 알아내기
 
    ```sh
    $ lsb_release -a
@@ -35,13 +67,13 @@ wsl_setting_for_rails, v1.1.0
    Codename:       bionic
    ```
 
-3. 레일스 설치에 필요한 의존성 라이브러리 설치하기
+4. 레일스 설치에 필요한 의존성 라이브러리 설치하기
 
    ```sh
    $ sudo apt install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev
    ```
 
-4. Zsh 설치하기
+5. Zsh 설치하기
 
    https://medium.com/@vinhp/use-zsh-in-wsl-on-windows-10-5d439a749c4c
 
@@ -50,7 +82,7 @@ wsl_setting_for_rails, v1.1.0
    $ zsh # 설치 옵션 0 을 선택한다.
    ```
 
-5. oh-my-zsh  설치하기
+6. oh-my-zsh  설치하기
 
    https://blog.joaograssi.com/windows-subsystem-for-linux-with-oh-my-zsh-conemu/
 
@@ -68,7 +100,7 @@ wsl_setting_for_rails, v1.1.0
 
    터미널을 종료한 후  WSL(우분투 18.04) 을다시 실행하면  zsh  실행 터미널이 보이게 된다.
 
-6. rbenv 설치하기
+7. rbenv 설치하기
 
    ```sh
    $ cd
@@ -86,7 +118,7 @@ wsl_setting_for_rails, v1.1.0
    $ ruby -v
    ```
 
-7. 젬 설치시 옵션추가
+8. 젬 설치시 옵션추가
 
    `~/.gemrc` 파일을 생성하고 아래와 같은 옵션을 추가한다. 
 
@@ -97,7 +129,7 @@ wsl_setting_for_rails, v1.1.0
 
    이것은 향후 젬을 설치할 때 문서 파일을 제외하기 위한 조치이다.
 
-8. Git 환경설정하기 
+9. Git 환경설정하기 
 
    ```sh
    $ git config --global color.ui true
@@ -117,7 +149,7 @@ wsl_setting_for_rails, v1.1.0
    $ git config --global alias.last 'log -1 HEAD'
    ```
 
-9. Github 에 ssh 공개키 등록하기   
+10. Github 에 ssh 공개키 등록하기   
 
    생성된  ssh  공개키를 복사한다. 
 
@@ -132,14 +164,14 @@ wsl_setting_for_rails, v1.1.0
    $ ssh -T git@github.com
    ```
 
-10. Nodejs 설치하기
+11. Nodejs 설치하기
 
-  ```sh
-  $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-  $ sudo apt install -y nodejs
-  ```
+   ```sh
+   $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+   $ sudo apt install -y nodejs
+   ```
 
-11. Yarn(자바스크립트 패키지 매니저) 설치하기
+12. Yarn(자바스크립트 패키지 매니저) 설치하기
 
     ```sh
     $ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
@@ -147,13 +179,13 @@ wsl_setting_for_rails, v1.1.0
     $ sudo apt update && sudo apt install yarn
     ```
 
-12. ImageMagick 설치하기
+13. ImageMagick 설치하기
 
     ```sh
     $ sudo apt install -y libmagickwand-dev imagemagick
     ```
 
-13. MySQL  설치하기
+14. MySQL  설치하기
 
     https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
 
@@ -187,7 +219,6 @@ wsl_setting_for_rails, v1.1.0
        mysql> update user set plugin='auth_socket' where user='system-username';
        mysql> flush privileges;
        mysql> exit;
-       $ sudo service mysql restart
        $ mysql
        ```
 
@@ -236,7 +267,7 @@ wsl_setting_for_rails, v1.1.0
       $ sudo service mysql start|stop|restart|status
       ```
 
-14. PostgreSQL  설치하기(선택사항)
+15. PostgreSQL  설치하기(선택사항)
 
     주의사항 : 윈도우용 PostgreSQL 을 설치하면 안된다. 반드시 리눅스용으로 설치한다. 아래의 링크로 접속하면 방법이 잘 소개되어 있다.
 
