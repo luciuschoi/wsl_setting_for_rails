@@ -12,33 +12,33 @@ wsl_setting_for_rails, v1.2.0
 
     윈도우 검색창에서 `제어판` 이라고 입력한 후 
 
-    ![](assets\program_and_feature.png)
+    ![](./assets/program_and_feature.png)
 
     우측 컬럼에 있는 프로그램 및 기능 항목을 선택한다.
 
     좌측 컬럼에 있는 Windows 기능 켜기/끄기 메뉴를 클릭하며 팝업창이 나타나며 이 때 `Linux용 Windows 하위시스템` 을 체크한 후 확인버튼을 클릭한다. 
 
-    ![](assets\wsl.png)
+    ![](./assets/wsl.png)
 
     윈도우가 재부팅된 후,
 
     우선 좌측 하단에 있는 윈도우 아이콘을 클릭하거나 키보드에서 좌측 하단에 위치한 윈도우 키를 누르고 `store` 라고 입력하면, 
 
-    ![](assets\ms_store.png)
+    ![](./assets/ms_store.png)
 
     검색 메뉴에 Microsoft Sotre 앱 항목이 보이게 되는데, 이것을 클릭하여 실행한다.
 
     스토어 창의 우측 상단에 있는 검색란에서 `ubuntu` 라고 입력하면 아래와 같이 관련 앱 목록이 보이는데 이 때 18.04 LTS 버전을 선택한다. 
 
-    ![](assets\ubuntu.png)
+    ![](./assets/ubuntu.png)
 
     다운로드 창의 우측에 있는 설치 버튼을 클릭한다. 
 
-    ![](assets\installation.png)
+    ![](./assets/installation.png)
 
     다운로드가 완료되면 설치 버튼이 보이게 된다. 이 버튼을 클릭하면 비로서 터미날 창이 보이고 우분투 앱이 설치된다. 이어지는 안내에 따라 진행한다.
 
-    ![](assets\terminal.png)
+    ![](./assets/terminal.png)
 
     슈퍼유저 권한을 가지는 사용자 등록이 완료되면 아래의 내용을 참조하여 레일스 개발환경을 설정한다. 
 
