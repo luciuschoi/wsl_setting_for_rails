@@ -1,4 +1,4 @@
-wsl_setting_for_rails, v1.2.0
+wsl_setting_for_rails, v1.2.1
 
 # 윈도우 10에서 레일스 프로젝트 개발환경 설정하기 (2019년)
 
@@ -197,6 +197,7 @@ wsl_setting_for_rails, v1.2.0
     ```
 
     * `root@localhost` 계정 접속이 안될 때
+      
       -> https://youtu.be/SJm91cvE_ks
 
       ```sh
@@ -235,6 +236,7 @@ wsl_setting_for_rails, v1.2.0
       ```
 
     * 한글깨짐현상 방지하기
+      
       (https://nesoy.github.io/articles/2017-05/mysql-UTF8)
       `/etc/mysql/my.cnf`  파일 끝에 아래의 내용을 추가한다. 
 
@@ -259,9 +261,9 @@ wsl_setting_for_rails, v1.2.0
 
     * 윈도우용 MySQL Workbench 설치하기
 
-      (https://downloads.mysql.com/archives/workbench/)
+      (https://dev.mysql.com/downloads/workbench/)
 
-      주의사항 : 서버의 시작과 종료는  WSL 에서 해야 한다.
+      주의사항 : 서버의 시작과 종료는  WSL 에서 해야 한다. 
 
       ```sh
       $ sudo service mysql start|stop|restart|status
@@ -272,7 +274,7 @@ wsl_setting_for_rails, v1.2.0
     주의사항 : 윈도우용 PostgreSQL 을 설치하면 안된다. 반드시 리눅스용으로 설치한다. 아래의 링크로 접속하면 방법이 잘 소개되어 있다.
 
     * 참고
-      1.  https://www.postgresql.org/download/linux/ubuntu/
+      1. https://www.postgresql.org/download/linux/ubuntu/
       2. https://medium.com/@stephanedmonson/solution-for-connecting-postgresql-via-wsl-windows-subsystem-for-linux-ubuntu18-c79940fa5742
       3. https://github.com/michaeltreat/Windows-Subsystem-For-Linux-Setup-Guide/blob/master/readmes/installs/PostgreSQL.md
 
