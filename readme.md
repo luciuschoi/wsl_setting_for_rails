@@ -1,4 +1,4 @@
-wsl_setting_for_rails, v1.3.1
+wsl_setting_for_rails, v1.3.2
 
 # 윈도우 10에서 레일스 프로젝트 개발환경 설정하기 (2019년)
 
@@ -151,18 +151,18 @@ wsl_setting_for_rails, v1.3.1
 
 10. Github 에 ssh 공개키 등록하기   
 
-   생성된  ssh  공개키를 복사한다.  
+    생성된  ssh  공개키를 복사한다.  
 
-   ```sh
-   $ cat ~/.ssh/id_rsa.pub
-   ```
+    ```sh
+    $ cat ~/.ssh/id_rsa.pub
+    ```
 
-   자신의  github 계정으로 로그인 한 후 설정으로 이동하여 ssh 키를 등록한다. 
-   이제 제대로 설정이 되었는지 확인하기 위해 아래와 같이 쉘명령을 실행한다.
+    자신의  github 계정으로 로그인 한 후 설정으로 이동하여 ssh 키를 등록한다. 
+    이제 제대로 설정이 되었는지 확인하기 위해 아래와 같이 쉘명령을 실행한다.
 
-   ```sh
-   $ ssh -T git@github.com
-   ```
+    ```sh
+    $ ssh -T git@github.com
+    ```
 
 11. Nodejs 설치하기
 
