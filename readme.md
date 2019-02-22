@@ -1,4 +1,4 @@
-wsl_setting_for_rails, v1.5.3
+wsl_setting_for_rails, v1.5.4
 
 # 윈도우 10에서 레일스 프로젝트 개발환경 설정하기 (2019년)
 
@@ -53,7 +53,7 @@ wsl_setting_for_rails, v1.5.3
 
    https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-18-04
 
-3. 운영체제 버전 알아내기
+3. 운영체제 버전 알아내기 (2019년 2월 23일 현재)
 
    ```sh
    $ lsb_release -a
@@ -62,7 +62,7 @@ wsl_setting_for_rails, v1.5.3
    ```
    No LSB modules are available.
    Distributor ID: Ubuntu
-   Description:    Ubuntu 18.04.1 LTS
+   Description:    Ubuntu 18.04.2 LTS
    Release:        18.04
    Codename:       bionic
    ```
@@ -122,6 +122,8 @@ wsl_setting_for_rails, v1.5.3
    $ ruby -v
    ```
 
+   > **팁**: **rvm** 을 설치할 때는 [How To Install Ruby on Rails with RVM on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rvm-on-ubuntu-18-04) 를 참고하면 된다.
+
 8. 젬 설치시 옵션추가
 
    `~/.gemrc` 파일을 생성하고 아래와 같은 옵션을 추가한다. 
@@ -151,22 +153,23 @@ wsl_setting_for_rails, v1.5.3
    $ git config --global alias.st status
    $ git config --global alias.unstage 'reset HEAD --'
    $ git config --global alias.last 'log -1 HEAD'
+   $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
    ```
 
 10. Github 에 ssh 공개키 등록하기   
 
-    생성된  ssh  공개키를 복사한다.  
+   생성된  ssh  공개키를 복사한다.  
 
-    ```sh
-    $ cat ~/.ssh/id_rsa.pub
-    ```
+   ```sh
+   $ cat ~/.ssh/id_rsa.pub
+   ```
 
-    자신의  github 계정으로 로그인 한 후 설정으로 이동하여 ssh 키를 등록한다. 
-    이제 제대로 설정이 되었는지 확인하기 위해 아래와 같이 쉘명령을 실행한다.
+   자신의  github 계정으로 로그인 한 후 설정으로 이동하여 ssh 키를 등록한다. 
+   이제 제대로 설정이 되었는지 확인하기 위해 아래와 같이 쉘명령을 실행한다.
 
-    ```sh
-    $ ssh -T git@github.com
-    ```
+   ```sh
+   $ ssh -T git@github.com
+   ```
 
 11. Nodejs 설치하기
 
@@ -338,11 +341,17 @@ wsl_setting_for_rails, v1.5.3
 
       * **pg_hba.conf** 파일의 위치 확인하기(hba: host-based authentication)
 
-        : db 에 접속해서 아래명령어를 입력해서 확인할 수 있다.
+        : db 에 접속해서 아래명령어를 입력해서 확인할 수 있다.  
+
+        > **노트**: **pg_hba.conf** 파일을 변경한 후에는 반드시 **PostgreSQL** 서버를 재시작해야 한다.  참고 : https://qiita.com/krkettle/items/2893de357319fcb7c1f0
 
         ```sh
         $ psql -h localhost -U postgres
         postgres=# SHOW hba_file;
+                      hba_file
+        -------------------------------------
+         /etc/postgresql/11/main/pg_hba.conf
+        (1 row)
         ```
 
     * postgres 계정 암호를 지정한다.
@@ -380,7 +389,7 @@ wsl_setting_for_rails, v1.5.3
       PostgreSQL을 깨끗하게 재설치할 때는 아래와 같이 실행한다.
 
       ```sh
-      $ sudo apt --purge remove postgresql/*
+      $ sudo apt --purge remove -y postgresql-11
       ```
 
 
