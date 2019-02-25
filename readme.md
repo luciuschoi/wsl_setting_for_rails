@@ -1,4 +1,4 @@
-wsl_setting_for_rails, v1.5.4
+wsl_setting_for_rails, v1.6.1
 
 # 윈도우 10에서 레일스 프로젝트 개발환경 설정하기 (2019년)
 
@@ -41,6 +41,37 @@ wsl_setting_for_rails, v1.5.4
     ![](./assets/terminal.png)
 
     슈퍼유저 권한을 가지는 사용자 등록이 완료되면 아래의 내용을 참조하여 레일스 개발환경을 설정한다. 
+
+    > 팁: 등록한 사용자 비밀번호를 분실하였거나 오류가 날 경우에는 root 계정으로 접속한 후 비밀번호를 변경해 주어야 하는 WSL에서는 다음과 같이 작업한다. 
+    >
+    > 1. 윈도우 키 + R 을 눌러 **cmd** 명령을 입력한다. 
+    >
+    >      ![](./assets/cmd.png)
+    >
+    > 2. 우분투 18.04 앱을 설치한 경우에는 다음과 같이 기본 사용자를 **root**로 변경해 준다.
+    >
+    >      ```bash
+    >      C:\Users\[user-name]> ubuntu1804 config --default-user root
+    >      ```
+    >
+    >      ![](./assets/change_default_user.png)
+    >
+    > 3. 이제 우분투 앱을 실행하면 **root** 계정으로 접속된 것을 확인할 수 있다.
+    >
+    > 4. 다음과 같이 해당 계정의 비밀번호를 변경하고 세션을 종료한다.
+    >
+    >      ```bash
+    >      # passwd wsluser
+    >      # exit
+    >      ```
+    >
+    > 5. 이제 다시 우분투 앱의 기본 사용자를 **wsluser**로 변경한다.
+    >
+    >      ```bash
+    >      C:\Users\[user-name]> ubuntu1804 config --default-user wsluser
+    >      ```
+    >
+    > 6. 우분투 앱을 실행하여 **wsluser** 계정으로 접속된 것을 확인한다.
 
 2. 시스템 업데이트 설치하기
 
@@ -158,18 +189,18 @@ wsl_setting_for_rails, v1.5.4
 
 10. Github 에 ssh 공개키 등록하기   
 
-   생성된  ssh  공개키를 복사한다.  
+  생성된  ssh  공개키를 복사한다.  
 
-   ```sh
-   $ cat ~/.ssh/id_rsa.pub
-   ```
+  ```sh
+  $ cat ~/.ssh/id_rsa.pub
+  ```
 
-   자신의  github 계정으로 로그인 한 후 설정으로 이동하여 ssh 키를 등록한다. 
-   이제 제대로 설정이 되었는지 확인하기 위해 아래와 같이 쉘명령을 실행한다.
+  자신의  github 계정으로 로그인 한 후 설정으로 이동하여 ssh 키를 등록한다. 
+  이제 제대로 설정이 되었는지 확인하기 위해 아래와 같이 쉘명령을 실행한다.
 
-   ```sh
-   $ ssh -T git@github.com
-   ```
+  ```sh
+  $ ssh -T git@github.com
+  ```
 
 11. Nodejs 설치하기
 
